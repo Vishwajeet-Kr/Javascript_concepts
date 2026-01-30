@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Lecture</title>
+</head>
+<body>
+    <ul class="language">
+        <li>JAVASCRIPT</li>
+    </ul>
+    
+</body>
+<script>
+    // ---------- innerHTML method, more complex as it traverse the whole tree than add element----------
+    function addLanguage(langName){
+        const li = document.createElement("li");
+        li.innerHTML = `${langName}`
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage('C++')
+    addLanguage('python')
+
+    // ---------- Another method, optimised as it directly adds the element does not traverse the whole tree----------
+    function addOptionalLanguage(langName) {
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptionalLanguage('Java');
+    addOptionalLanguage('goLang');
+
+    // ----------------To Edit values --------------------
+    const secondLang = document.querySelector("li:nth-child(2)")
+    console.log(secondLang);
+
+    // secondLang.innerHTML = "Mojo"           //Avoid this method as it uses innerHTML, same whole traversing story.
+    
+    const newli = document.createElement('li')
+    newli.textContent = "Mojo"
+    secondLang.replaceWith(newli)            //replaceWith method
+
+    //another replacing method
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = '<li>TypeScript</li>'
+
+
+    //------------------- To Remove value -----------------
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()
+
+</script>
+</html>

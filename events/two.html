@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur Code</h1>
+    <button id="stop">STOP</button>
+</body>
+<script>
+    const sayBishu = function() {
+        console.log('Bishwjit')
+    }
+
+    const ABC = function() {
+        document.querySelector('h1').innerHTML = 'Best JS Series'
+    }
+    const changeMe = setTimeout(ABC, 3000)       //sets a timer which executes a function once the timer expires(sirf ekbar execute hoga)
+
+    // --------- clearTimeout(setTimeout wala variable)                      //used to clear a timer set with setTimeout() 
+
+    document.querySelector('#stop').addEventListener('click', function() {
+        clearTimeout(changeMe)
+        console.log('STOPPED');
+    })
+
+</script>
+</html>
